@@ -1,0 +1,31 @@
+SQL - Aula 7 - Data 07.11 
+Luciene Santos e Railane Trovão
+
+--Questão 1
+
+SELECT *  FROM `bigquery-public-data.chicago_crime.crime` LIMIT 5
+
+SELECT max(date) as dt_max, min(date) as dt_min FROM `bigquery-public-data.chicago_crime.crime` LIMIT 5
+
+--Questão 2
+
+SELECT extract(year from date), count(case_number) as quant_crimes  FROM `bigquery-public-data.chicago_crime.crime` group by extract(year from date)
+
+--Questão 3
+
+SELECT extract(month from date), count(case_number) as quant_crimes  FROM `bigquery-public-data.chicago_crime.crime` group by extract(month from date)
+
+--Questão 4
+
+SELECT primary_type, count(case_number) as quant_crimes  FROM `bigquery-public-data.chicago_crime.crime` group by primary_type
+
+--Questão 5
+
+SELECT primary_type, count(case_number) as quant_crimes  FROM `bigquery-public-data.chicago_crime.crime` group by primary_type order by count(case_number) desc
+
+SELECT primary_type, count(case_number) as quant_crimes  FROM `bigquery-public-data.chicago_crime.crime` where primary_type = "THEFT" group by primary_type order by count(case_number) desc
+
+SELECT extract(month from date) as mes,extract(year from date) as ano, count(case_number) as quant_crimes  FROM `bigquery-public-data.chicago_crime.crime` where extract(year from date) = 2022 group by extract(month from date), extract(year from date) 
+
+ 
+
